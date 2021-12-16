@@ -1,5 +1,5 @@
 import apolloServerContext from '@src/lib/config/apolloServerContext';
-import schema from '@src/graphql/schema/schema';
+import schema from '@src/lib/config/apolloServerSchema';
 
 const apolloServerConfig = {
   schema,
