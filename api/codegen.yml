@@ -10,3 +10,5 @@ generates:
       contextType: src/lib/interfaces/IPrismaContext#IPrismaContext
       useIndexSignature: true
       federation: true
+      # enum to union
+      enumsAsTypes: true
