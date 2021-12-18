@@ -7,11 +7,13 @@ const apolloServerConfig = {
   context: async ({ req }) => {
     // 因為沒有實踐註冊登錄，Token 先直接使用 ID 不加密
     const token = req.headers.authorization || '';
-    const user = await prismaContext.prisma.userModel.findUnique({
-      where: {
-        id: parseInt(token),
-      },
-    });
+    const user = token
+      ? await prismaContext.prisma.userModel.findUnique({
+          where: {
+            id: parseInt(token),
+          },
+        })
+      : null;
 
     return { prismaContext, user };
   },
