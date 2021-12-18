@@ -7,7 +7,7 @@ generates:
       - 'typescript'
       - 'typescript-resolvers'
     config:
-      contextType: src/lib/interfaces/IPrismaContext#IPrismaContext
+      contextType: src/lib/interfaces/IApolloServerContext#IApolloServerContext
       useIndexSignature: true
       federation: true
       # enum to union
