@@ -53,6 +53,7 @@
     "@graphql-codegen/core": "^1.17.10",
     "@graphql-codegen/plugin-helpers": "^1.18.8",
     "@graphql-codegen/schema-ast": "^1.18.3",
+    "@graphql-tools/load-files": "^6.5.3",
     "@graphql-tools/schema": "^8.3.1",
     "@prisma/client": "^3.7.0-dev.24",
     "apollo-graphql": "^0.9.3",
