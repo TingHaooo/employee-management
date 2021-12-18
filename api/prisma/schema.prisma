@@ -22,3 +22,37 @@ model Author {
   username String
   books    Book[]
 }
+
+model UserModel {
+  id   Int    @id @default(autoincrement())
+  name    String
+  role    Role     @default(STAFF)
+  archived    Boolean     @default(false)
+  reviews ReviewModel[] @relation(name: "target")
+  authorReviews ReviewModel[] @relation(name: "author")
+  tasks TaskModel[] @relation(name: "assigned")
+  targetTasks TaskModel[] @relation(name: "reviewFor")
+}
+
+model ReviewModel {
+  id Int    @id @default(autoincrement())
+  content String
+  target UserModel @relation(name: "target", fields: [targetId], references: [id])
+  targetId Int
+  author UserModel @relation(name: "author", fields: [authorId], references: [id])
+  authorId Int
+}
+
+model TaskModel {
+  id Int    @id @default(autoincrement())
+  assigned UserModel @relation(name: "assigned", fields: [assignedId], references: [id])
+  assignedId Int
+  reviewFor UserModel @relation("reviewFor", fields: [reviewForId], references: [id])
+  reviewForId Int
+  completed Boolean
+}
+
+enum Role {
+  STAFF
+  ADMIN
+}
