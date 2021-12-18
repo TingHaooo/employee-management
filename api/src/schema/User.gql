@@ -1,0 +1,40 @@
+enum Role {
+  STAFF
+  ADMIN
+}
+
+type User {
+  id: Int!
+  name: String!
+  role: Role!
+  reviews: [Review!]
+  authorReviews: [Review!]
+  tasks: [Task!]
+  targetTasks: [Task!]
+}
+
+input CreateUserInput {
+  name: String!
+  role: Role!
+}
+
+input UpdateUserInput {
+  name: String
+  role: Role
+}
+
+type Query {
+  users: [User!] @permissions(required: ["queryUsers"])
+  user(id: Int!): User @permissions(required: ["queryUser"])
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): MutationResponse
+    @permissions(required: ["createUser"])
+  updateUser(id: Int!, input: UpdateUserInput!): MutationResponse
+    @permissions(required: ["updateUser"])
+  archivedUser(id: Int!): MutationResponse
+    @permissions(required: ["archivedUser"])
+  assignUserReview(assignId: Int!, reviewForId: Int!): MutationResponse
+    @permissions(required: ["assignUserReview"])
+}

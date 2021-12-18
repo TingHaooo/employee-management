@@ -1,12 +1,14 @@
 overwrite: true
-schema: 'src/graphql/generated/schema.graphql'
+schema: './src/schema/*.gql'
 documents: null
 generates:
-  src/graphql/generated/graphql.ts:
+  src/generated/type.ts:
     plugins:
       - 'typescript'
       - 'typescript-resolvers'
     config:
-      contextType: src/lib/interfaces/IPrismaContext#IPrismaContext
+      contextType: src/lib/interfaces/IApolloServerContext#IApolloServerContext
       useIndexSignature: true
       federation: true
+      # enum to union
+      enumsAsTypes: true

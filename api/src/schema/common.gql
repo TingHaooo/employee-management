@@ -1,0 +1,9 @@
+directive @permissions(required: [String!]) on FIELD_DEFINITION
+
+type Query {
+  helloWorld: String!
+}
+
+type MutationResponse {
+  message: String!
+}
