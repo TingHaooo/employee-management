@@ -1,0 +1,28 @@
+type Review {
+  id: Int!
+  content: String!
+  targetId: Int!
+  target: User!
+  authorId: Int!
+  author: User!
+}
+
+input CreateReviewInput {
+  content: String!
+  targetId: Int!
+  authorId: Int!
+}
+
+input UpdateReviewInput {
+  content: String!
+}
+
+type Query {
+  reviews: [Review!] @permissions(required: ["queryReviews"])
+  review(id: Int!): Review @permissions(required: ["queryReview"])
+}
+
+type Mutation {
+  createReview(input: CreateReviewInput!): MutationResponse
+  updateReview(id: Int!, input: UpdateReviewInput!): MutationResponse
+}
